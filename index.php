@@ -15,7 +15,7 @@
 		    padding: 12px; /* Add some padding */
 		    text-decoration: none; /* Remove underline from links */
 		    font-family: "AppleGothic", sans-serif;
-		    border: 2px dashed black;
+		    border: 1px dashed black;
 		}
 
 		.vertical-menu a:hover {
