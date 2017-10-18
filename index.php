@@ -29,7 +29,7 @@
 	</style>
 </head>
 <body>
-	<h2>Check out:</h2>
+	<h2>Zak's AB Testing - Check Out:</h2>
 	<div class="vertical-menu">
 		<a href="#" class="active">Home</a>
 		<?php
