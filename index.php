@@ -33,7 +33,7 @@
 	<div class="vertical-menu">
 		<a href="#" class="active">Home</a>
 		<?php
-		$path = "Code/";
+		$path = "Code";
 		$dh = opendir($path);
 		$i=1;
 		while (($file = readdir($dh)) !== false) {
