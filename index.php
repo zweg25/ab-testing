@@ -27,16 +27,16 @@
 	</style>
 </head>
 <body>
+	<h2>Check out:</h2>
 	<div class="vertical-menu">
 		<a href="#" class="active">Home</a>
 		<?php
-		echo "<h2>Check out:</h2>";
-		$path = ".Code/";
+		$path = "Code/";
 		$dh = opendir($path);
 		$i=1;
 		while (($file = readdir($dh)) !== false) {
 		    if($file != "." && $file != ".." && $file != "index.php" && $file != ".htaccess" && $file != "error_log" && $file != "cgi-bin") {
-		        echo "<a href='$path/$file'>$file</a><br /><br />";
+		        echo "<a href='$path/$file'>$file</a>\r\n";
 		        $i++;
 		    }
 		}
