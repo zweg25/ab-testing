@@ -26,6 +26,12 @@ function stats_standard_deviation(array $a, $sample = true) {
 
 function compute_t_test($x1, $x2, $N1, $N2, $s1, $s2){
     echo '<br><img src="t-test.jpg" alt="T Test" height="432" width="580"><br>';
+    echo "<p>Sample Mean-A = ".$x1 . "</p>";
+    echo "<p>Sample Mean-B = ".$x2 . "</p>";
+    echo "<p>Variance-A = ".$s1 . "</p>";
+    echo "<p>Variance-B = ".$s2 . "</p>";
+    echo "<p>Sample Size-A = ".$N1 . "</p>";
+    echo "<p>Sample Size-B = ".$N2 . "</p>";
     return abs($x1 - $x2) / sqrt(((($N1 - 1) * ($s1**2) + ($N2 - 1) * ($s2**2)) / ($N1 + $N2 - 2)) * (1/$N1 + 1/$N2));
 }
 

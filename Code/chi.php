@@ -145,6 +145,7 @@ if (isset($_POST['array'])){
 	//The following computes the chi-squared value for a 2x2 input
 	$chiSquared = 0;
 	echo "Calculations:<br>";
+	echo '<img src="chi-formula.png" alt="Chi-squared formula" height="282" width="964"><br>';
 	for ($i=0; $i < 2; $i++) { 
 		for ($j=0; $j < 2; $j++) { 
 			$observed = $observedArray[$i][$j];
