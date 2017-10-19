@@ -30,7 +30,7 @@
 </head>
 <body>
 	<h2>Zak's AB Testing - Check Out:</h2>
-	<div class="vertical-menu" style="margin: 10px; float: left;">
+	<div class="vertical-menu" style="margin: 30px; float: left;">
 		<a href="#" class="active">AB-TESTING</a>
 		<?php
 		$path = "Code";
@@ -45,8 +45,7 @@
 		closedir($dh);
 		?>
 	</div>
-	<br><br>
-	<div class="vertical-menu" style="margin: 10px; float: left;">
+	<div class="vertical-menu" style="margin: 30px; float: left;">
 		<a href="#" class="active">Eye-Tracking</a>
 		<a href='Eye-Tracking/Code/heatmap.html'>Checkout the Heatmap here!</a>
 		<a href='Eye-Tracking/Code/replay.html'>Checkout the Eye Movements here!</a>
