@@ -46,7 +46,7 @@
 		?>
 	</div>
 	<br><br>
-	<div class="vertical-menu" style="margin: 10px;">
+	<div class="vertical-menu" style="margin: 10px; float: left;">
 		<a href="#" class="active">Eye-Tracking</a>
 		<a href='Eye-Tracking/Code/heatmap.html'>Checkout the Heatmap here!</a>
 		<a href='Eye-Tracking/Code/replay.html'>Checkout the Eye Movements here!</a>
