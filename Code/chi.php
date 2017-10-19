@@ -159,15 +159,16 @@ if (isset($_POST['array'])){
 		}
 	}
 
+	$pVal = 3.84;
 	echo "<p> = <b>". $chiSquared . "</b></p>";
-	echo "<p> Deggrees of freedom (df) = number of cases - 1 = 4 - 1 = <b>3</b></p>";
-	echo "<p>Probability value for 3 degrees of freedom at 0.05 is <b>7.81</b></p>";
+	echo "<p> Degrees of freedom (df) = (rows - 1)(columns - 1) = (2 - 1)(2 - 1) = <b>1</b></p>";
+	echo "<p>Probability value for 1 degree of freedom at 0.05 is <b>".$pVal."</b></p>";
 
-	if (7.81 < $chiSquared) {
-		echo "<h3>". $chiSquared . " is greater than 7.81 so our data is statiscally significant! We can reject the NULL Hypothesis.</h3>";
+	if ($pVal < $chiSquared) {
+		echo "<h3>". $chiSquared . " is greater than ".$pVal." so our data is statiscally significant! We can reject the NULL Hypothesis.</h3>";
 	}
 	else{
-		echo "<h3>". $chiSquared . " is not greater than 7.81 so our data is NOT statiscally significant. We fail to reject the NULL Hypothesis.</h3>";
+		echo "<h3>". $chiSquared . " is not greater than ".$pVal." so our data is NOT statiscally significant. We fail to reject the NULL Hypothesis.</h3>";
 	}
 
 }
