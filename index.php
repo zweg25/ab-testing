@@ -31,9 +31,25 @@
 <body>
 	<h2>Zak's AB Testing - Check Out:</h2>
 	<div class="vertical-menu">
-		<a href="#" class="active">Home</a>
+		<a href="#" class="active">AB-TESTING</a>
 		<?php
 		$path = "Code";
+		$dh = opendir($path);
+		$i=1;
+		while (($file = readdir($dh)) !== false) {
+		    if($file != "." && $file != ".." && $file != "index.php" && $file != ".htaccess" && $file != "error_log" && $file != "cgi-bin") {
+		        echo "<a href='$path/$file'>$file</a>\r\n";
+		        $i++;
+		    }
+		}
+		closedir($dh);
+		?>
+
+		<a href="#" class="active">Eye-Tracking</a>
+		<a href='Eye-Tracking/Code/heatmap.html'>Checkout the Heatmap here!</a>
+		<a href='Eye-Tracking/Code/replay.html'>Checkout the Eye Movements here!</a>
+		<?php
+		$path = "Eye-Tracking";
 		$dh = opendir($path);
 		$i=1;
 		while (($file = readdir($dh)) !== false) {

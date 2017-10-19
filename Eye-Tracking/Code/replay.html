@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="heatmap.js-2.0.5/build/heatmap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="heatmap.css"/>
+</head>
+<body style="margin:0; background-image: url('A-img.jpg'); background-size: 1920px 1430px; background-repeat: no-repeat;">
+<canvas id="myCanvas" width="1920" height="1430" style="position: absolute; left: 0px; top: 0px">
+<script>
+// TODO: in the line two lines above this one, replace the width and height values with the original resolution of your screenshot
+
+const CSV_NAME = 'data-A.csv';
+
+//ajax GET request to load the csv file and launch the animated replay code
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: CSV_NAME,
+        dataType: "text",
+        success: function(data) {processData(data);}
+    });
+});
+
+// this is just a function that slows processing down a bit to reduce computer lag
+// you can safely ignore it
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//actual process function
+async function processData(allText) {
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	
+  //split csv lines by return \n and by commas
+  var allTextLines = allText.split(/\r\n|\n/);
+
+  // allTextLines is an array that has each line from
+  // your data file as an element
+  //
+  // for example, the first element in allTextLines is
+  // the header, so you can get that row and split it like:
+  //
+  // var headers = allTextLines[0].split(',');
+  //
+  // Note that you can strip out the extra quotes from
+  // a string and convert it into a float by using:
+  //
+  // var myfloat = parseFloat(mystring.substring(1, mystring.length-1));
+  //
+  // TODO: loop through the data in allTextLines
+  // and animate the user's eye gaze on the screen by drawing a
+  // dot on the canvas to show where the user was looking over time.
+  //
+  // There are multiple ways this can be done, and the goal is just to
+  // be able to visualize how the user looked at the page over time
+  // The replay does not need to be exactly accurate to the time.
+  //
+  // You will notice that if you just keep drawing forever, it will
+  // create a mess on the screen, so you can clear the dots periodically
+  // using the ctx.clearRect() function (see below)
+  //
+  // One way to do things periodically is using the modulus operator
+  // For example, if the variable i is incremented in a loop,
+  // then i % 100 === 0 is true every 100 loops
+  //
+  // The functions that will be handy are:
+  //
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   to clear the screen. No need to change any parameters
+  //
+  // await sleep(m);
+  //   to slow things down so that there is m milliseconds of delay
+  //
+  // ctx.fillRect(x, y, w, h)
+  //   to draw a dot at x,y with width w and height h
+  //   (select a small width and height since it's just drawing a dot)
+  //
+  // The variables you can set are:
+  // ctx.fillStyle
+  //   which can be a color, like "rgb(255, 0, 0)" for red (keep the quotes).
+  //   Set this before the ctx.fillRect() function call
+
+  for (var i = 0; i < allTextLines.length-1; i++) {
+      var previous = allTextLines[i + 1].split(',');
+      var row = allTextLines[i + 2].split(',');
+      
+      x1 = parseFloat(previous[0].substring(1, previous[0].length-1));
+      y1 = parseFloat(previous[1].substring(1, previous[1].length-1));
+      x2 = parseFloat(row[0].substring(1, row[0].length-1));
+      y2 = parseFloat(row[1].substring(1, row[1].length-1));
+
+      //Some of the eye tracking data was uncaptured,
+      //so we shouldn't display it
+      if (x1 != 0 && x2 != 0 && y1 != 0 && y2 != 0) {
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+        await sleep(5);
+        ctx.fillStyle = "#FF0000";
+        //ctx.fillRect(xVal, yVal, 5, 5);
+
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke();
+        ctx.strokeStyle = "#FF0000";
+    }
+  }
+
+
+
+
+
+}
+</script>
+</div>
+</body>
+</html>
