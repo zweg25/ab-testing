@@ -30,7 +30,7 @@
 </head>
 <body>
 	<h2>Zak's AB Testing - Check Out:</h2>
-	<div class="vertical-menu" style="margin: 10px;">
+	<div class="vertical-menu" style="margin: 10px; float: left;">
 		<a href="#" class="active">AB-TESTING</a>
 		<?php
 		$path = "Code";
